@@ -1,0 +1,21 @@
+h1 {
+	text-align: center;
+	font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.form {
+	width: 100%;
+	height: 60vh;
+	border: 1px solid black;
+	background-color: #fff;
+	margin-top: 150px;
+}
+
+.link {
+	text-decoration: none;
+	color: black;
+}
+
+.btn {
+	width: 100%;
+}
