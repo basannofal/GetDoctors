@@ -20,8 +20,8 @@
 					<li><a href="#"><i class='bx bxs-user-circle icon'></i>
 							Profile</a></li>
 					<li><a href="#"><i class='bx bxs-cog'></i> Settings</a></li>
-					<li><a href="#"><i class='bx bxs-log-out-circle'></i>
-							Logout</a></li>
+					<li><a href="${pageContext.request.contextPath}/adminlogout"><i class='bx bxs-log-out-circle'></i>
+							Logout </a></li>
 				</ul>
 			</div>
 		</nav>

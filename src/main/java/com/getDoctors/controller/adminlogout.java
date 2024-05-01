@@ -1,8 +1,8 @@
 package com.getDoctors.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,19 +10,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.getDoctors.dao.admindao;
-
 /**
- * Servlet implementation class adminlogin
+ * Servlet implementation class adminlogout
  */
-@WebServlet("/adminlogin")
-public class adminlogin extends HttpServlet {
+@WebServlet("/adminlogout")
+public class adminlogout extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public adminlogin() {
+	public adminlogout() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -34,6 +32,10 @@ public class adminlogin extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		HttpSession session = request.getSession(false);
+		if (session != null) {
+			session.invalidate();
+		}
 		response.sendRedirect(request.getContextPath() + "/adminlogin.jsp");
 
 	}
@@ -45,22 +47,7 @@ public class adminlogin extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String uname = request.getParameter("username");
-		String pass = request.getParameter("pass");
-		admindao admin = new admindao();
-		boolean isAuth = admin.loginAuth(uname, pass);
-
-		if (isAuth == true) {
-			HttpSession session = request.getSession();
-			session.setAttribute("userType", 1);
-			response.sendRedirect("views/admin/admindashboard.jsp");
-		} else {
-			request.setAttribute("errorMsg", "Invalid username or password");
-			RequestDispatcher rd = request.getRequestDispatcher("adminlogin.jsp");
-			rd.forward(request, response);
-
-		}
-
+		doGet(request, response);
 	}
 
 }
