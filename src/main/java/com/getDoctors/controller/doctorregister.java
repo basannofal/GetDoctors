@@ -9,19 +9,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.getDoctors.dao.doctordao;
 import com.getDoctors.dao.patientdao;
 
 /**
- * Servlet implementation class patientregister
+ * Servlet implementation class doctorregister
  */
-@WebServlet("/patientregister")
-public class patientregister extends HttpServlet {
+@WebServlet("/doctorregister")
+public class doctorregister extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public patientregister() {
+	public doctorregister() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -43,31 +44,36 @@ public class patientregister extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
+
 		String fname = request.getParameter("fname");
 		String lname = request.getParameter("lname");
 		String email = request.getParameter("email");
 		String phone = request.getParameter("phone");
 		String address = request.getParameter("address");
-		String strage = request.getParameter("age");
-		int age = Integer.parseInt(strage);
+		String speci = request.getParameter("specialization");
+		String exp = request.getParameter("exp");
+		String quali = request.getParameter("qualification");
 		String pass = request.getParameter("pass");
 		String cpass = request.getParameter("cpass");
 		String gender = request.getParameter("gender");
-
-		if(pass.equals(cpass)) {
+		
+		
+		System.out.println(pass + " " + cpass);
+		if (pass.equals(cpass)) {
+			System.out.println("/n Called ");
 			String fullname = fname.trim() + " " + lname.trim();
-			patientdao pdao = new patientdao();
-			boolean isSineup = pdao.registerPatient(fullname, email, address, age, phone, gender, pass);
-			if(isSineup) {
+			doctordao ddao = new doctordao();
+			boolean isSineup = ddao.registerDoctor(fullname, email, phone, address, speci, exp, quali, gender, cpass);
+			if (isSineup) {
 				RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
 				rd.forward(request, response);
-			}else {
-				request.setAttribute("pterrorMsg", "Please Try with another email");
+			} else {
+				request.setAttribute("errorMsg", "Please Try with another email");
 				RequestDispatcher rd = request.getRequestDispatcher("registration.jsp");
 				rd.forward(request, response);
 			}
-		}else {
-			request.setAttribute("pterrorMsg", "password Not Match");
+		} else {
+			request.setAttribute("errorMsg", "password Not Match");
 			RequestDispatcher rd = request.getRequestDispatcher("registration.jsp");
 			rd.forward(request, response);
 		}

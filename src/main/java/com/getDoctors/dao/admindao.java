@@ -10,8 +10,8 @@ import com.getDoctors.dao.*;
 public class admindao {
 	dbconnection conObj = new dbconnection();
 	
-	public boolean loginAuth(String uname, String pass) {
-		boolean isAuth = false;
+	public int loginAuth(String uname, String pass) {
+		int patid = 0;
 		try {
 			Connection conn = conObj.dbconnect();
 			PreparedStatement ps = conn.prepareStatement("SELECT * FROM `main_admin` WHERE username = ? and password = ?;");
@@ -21,15 +21,13 @@ public class admindao {
 			ResultSet rs = ps.executeQuery();
 
 			if(rs.next()) {
-				isAuth = true;
-			}else {
-				isAuth = false;
-			}
+	            patid = rs.getInt("admin_id");
+	        }
 		} catch (Exception e) {
 			System.out.print(e);
 			e.printStackTrace();
 		}
-		return isAuth;
+		return patid;
 	}
 
 

@@ -18,7 +18,9 @@
 				<img src="https://image.ibb.co/n7oTvU/logo_white.png" alt="" />
 				<h3>Welcome</h3>
 				<p>You have a greate day!</p>
+				<a href="<%= request.getContextPath() %>/login.jsp">
 				<input type="submit" name="" value="Login" /><br />
+				</a>
 			</div>
 			<div class="col-md-9 register-right">
 				<ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
@@ -85,9 +87,20 @@
 										<input type="password" class="form-control"
 											placeholder="Confirm Password *" value="" name="cpass" />
 									</div>
+
+
 									<input type="submit" class="btnRegister" value="Register" />
 								</div>
-
+								<%
+								String pterrorMsg = (String) request.getAttribute("pterrorMsg");
+								if (pterrorMsg != null && !pterrorMsg.isEmpty()) {
+								%>
+								<div class="alert alert-danger" role="alert">
+									<%=pterrorMsg%>
+								</div>
+								<%
+								}
+								%>
 							</div>
 						</form>
 
@@ -111,7 +124,7 @@
 										<input type="text" class="form-control"
 											placeholder="Your Address *" value="" name="address" />
 									</div>
-											<div class="form-group">
+									<div class="form-group">
 										<input type="text" name="qualification" class="form-control"
 											placeholder="Your Qualification *" value="" />
 									</div>
@@ -146,7 +159,7 @@
 										<input type="text" name="specialization" class="form-control"
 											placeholder="Your Specialization *" value="" />
 									</div>
-									
+
 									<div class="form-group">
 										<input type="text" name="exp" class="form-control"
 											placeholder="Your Exprince *" value="" />
@@ -158,10 +171,20 @@
 									</div>
 									<input type="submit" class="btnRegister" value="Register" />
 								</div>
-
+								<%
+								String errorMsg = (String) request.getAttribute("errorMsg");
+								System.out.print(errorMsg);
+								if (errorMsg != null && !errorMsg.isEmpty()) {
+								%>
+								<div class="alert alert-danger" role="alert">
+									<%=errorMsg%>
+								</div>
+								<%
+								}
+								%>
 							</div>
 						</form>
-						
+
 					</div>
 				</div>
 			</div>
