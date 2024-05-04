@@ -8,18 +8,33 @@ public class doctor {
 	private String number;
 	private String address;
 	private String specilization;
-	private String exp;
+	private int exp;
 	private String qualification;
 	private String gender;
 	private String pass;
 	private String profile;
+	private String status;
 	
 	
-	
-	
-	
+	public doctor(String fname, String lname, String email, String number, String address, String specilization,
+			int exp, String qualification, String gender, String pass, String profile, String status) {
+		super();
+		this.fname = fname;
+		this.lname = lname;
+		this.email = email;
+		this.number = number;
+		this.address = address;
+		this.specilization = specilization;
+		this.exp = exp;
+		this.qualification = qualification;
+		this.gender = gender;
+		this.pass = pass;
+		this.profile = profile;
+		this.status = status;
+	}
 	public doctor(int doctor_id, String fname, String lname, String email, String number, String address,
-			String specilization, String exp, String qualification, String gender, String pass, String profile) {
+			String specilization, int exp, String qualification, String gender, String pass, String profile,
+			String status) {
 		super();
 		this.doctor_id = doctor_id;
 		this.fname = fname;
@@ -33,21 +48,7 @@ public class doctor {
 		this.gender = gender;
 		this.pass = pass;
 		this.profile = profile;
-	}
-	public doctor(String fname, String lname, String email, String number, String address, String specilization,
-			String exp, String qualification, String gender, String pass, String profile) {
-		super();
-		this.fname = fname;
-		this.lname = lname;
-		this.email = email;
-		this.number = number;
-		this.address = address;
-		this.specilization = specilization;
-		this.exp = exp;
-		this.qualification = qualification;
-		this.gender = gender;
-		this.pass = pass;
-		this.profile = profile;
+		this.status = status;
 	}
 	public int getDoctor_id() {
 		return doctor_id;
@@ -91,10 +92,10 @@ public class doctor {
 	public void setSpecilization(String specilization) {
 		this.specilization = specilization;
 	}
-	public String getExp() {
+	public int getExp() {
 		return exp;
 	}
-	public void setExp(String exp) {
+	public void setExp(int exp) {
 		this.exp = exp;
 	}
 	public String getQualification() {
@@ -121,7 +122,16 @@ public class doctor {
 	public void setProfile(String profile) {
 		this.profile = profile;
 	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
 	
+	
+	
+		
 	
 	
 }

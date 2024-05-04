@@ -5,7 +5,7 @@ public class patient {
 	private String name;
 	private String email;
 	private String address;
-	private String age;
+	private int age;
 	private String number;
 	private String gender;
 	private String pass;
@@ -15,7 +15,7 @@ public class patient {
 	
 	
 	
-	public patient(String name, String email, String address, String age, String number, String gender, String pass) {
+	public patient(String name, String email, String address, int age, String number, String gender, String pass) {
 		super();
 		this.name = name;
 		this.email = email;
@@ -25,7 +25,7 @@ public class patient {
 		this.gender = gender;
 		this.pass = pass;
 	}
-	public patient(int patient_id, String name, String email, String address, String age, String number, String gender,
+	public patient(int patient_id, String name, String email, String address, int age, String number, String gender,
 			String pass) {
 		super();
 		this.patient_id = patient_id;
@@ -61,10 +61,10 @@ public class patient {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public String getAge() {
+	public int getAge() {
 		return age;
 	}
-	public void setAge(String age) {
+	public void setAge(int age) {
 		this.age = age;
 	}
 	public String getNumber() {

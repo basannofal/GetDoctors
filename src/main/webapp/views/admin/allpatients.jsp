@@ -82,10 +82,20 @@
 									<td><%=dr.getEmail()%></td>
 									<td><%=dr.getNumber()%></td>
 									<td><%=dr.getAddress()%></td>
-									<td><%=dr.getAge()%></td>
-									<td><a href="edit?id=<c:out value=<%=dr.getPatient_id()%>/>">Edit</a>
-										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a
-										href="delete?id=<c:out value=<%=dr.getPatient_id()%>/>">Delete</a></td>
+									<td><%=dr.getAge() + " "%></td>
+									<td>
+										<div class="head">
+
+
+											<div class="menu">
+												<i class='bx bx-dots-horizontal-rounded icon'></i>
+												<ul class="menu-link">
+													<li><a href="edit?id=<c:out value='${user.id}'/>">Edit</a></li>
+													<li><a href="delete?id=<c:out value='${user.id}'/>">Delete</a></li>
+												</ul>
+											</div>
+										</div>
+									</td>
 								</tr>
 								<%
 								}

@@ -12,8 +12,7 @@ public class doctordao {
 	dbconnection conObj = new dbconnection();
 
 	public boolean registerDoctor(String name, String email, String number, String address, String specialization,
-			String experience, String qualification,  String gender,
-			String password) {
+			String experience, String qualification, String gender, String password) {
 		System.out.println(" nn   REAched");
 		try {
 			if (isDoctorEmailAvailable(email)) {
@@ -58,20 +57,21 @@ public class doctordao {
 			return false;
 		}
 	}
-	
+
 	public int doctorlogin(String email, String pass) {
 		int patid = 0;
 		try {
 			Connection conn = conObj.dbconnect();
-			PreparedStatement ps = conn.prepareStatement("SELECT * FROM `doctor` WHERE email = ? and password = ? and status = 1;");
+			PreparedStatement ps = conn
+					.prepareStatement("SELECT * FROM `doctor` WHERE email = ? and password = ? and status = 1;");
 
 			ps.setString(1, email);
 			ps.setString(2, pass);
 			ResultSet rs = ps.executeQuery();
 
-			if(rs.next()) {
-	            patid = rs.getInt("doctor_id");
-	        }
+			if (rs.next()) {
+				patid = rs.getInt("doctor_id");
+			}
 		} catch (Exception e) {
 			System.out.print(e);
 			e.printStackTrace();
@@ -79,7 +79,7 @@ public class doctordao {
 		System.out.println(patid);
 		return patid;
 	}
-	
+
 	public List<doctor> AllDoctors() {
 		List<doctor> data = new ArrayList<>();
 		try {
@@ -95,12 +95,15 @@ public class doctordao {
 				String number = rs.getString("number");
 				String address = rs.getString("address");
 				String specilization = rs.getString("specialization");
-				String exp = rs.getString("experience");
+				int exp = rs.getInt("experience");
 				String qualification = rs.getString("qualification");
-				String gender  = rs.getString("gender");
+				String gender = rs.getString("gender");
 				String pass = rs.getString("password");
 				String profile = rs.getString("profile_picture");
-				data.add(new doctor(doctor_id, fname, lname, email, number, address, specilization, exp, qualification, gender, pass, profile));
+				String status = rs.getString("status");
+
+				data.add(new doctor(doctor_id, fname, lname, email, number, address, specilization, exp,
+						qualification, gender, pass, profile, status));
 			}
 
 		} catch (Exception e) {
@@ -125,12 +128,15 @@ public class doctordao {
 				String number = rs.getString("number");
 				String address = rs.getString("address");
 				String specilization = rs.getString("specialization");
-				String exp = rs.getString("experience");
+				int exp = rs.getInt("experience");
 				String qualification = rs.getString("qualification");
-				String gender  = rs.getString("gender");
+				String gender = rs.getString("gender");
 				String pass = rs.getString("password");
 				String profile = rs.getString("profile_picture");
-				data.add(new doctor(doctor_id, fname, lname, email, number, address, specilization, exp, qualification, gender, pass, profile));
+				String status = rs.getString("status");
+
+				data.add(new doctor(doctor_id, fname, lname, email, number, address, specilization, exp,
+						qualification, gender, pass, profile, status));
 			}
 
 		} catch (Exception e) {
@@ -155,12 +161,15 @@ public class doctordao {
 				String number = rs.getString("number");
 				String address = rs.getString("address");
 				String specilization = rs.getString("specialization");
-				String exp = rs.getString("experience");
+				int exp = rs.getInt("experience");
 				String qualification = rs.getString("qualification");
-				String gender  = rs.getString("gender");
+				String gender = rs.getString("gender");
 				String pass = rs.getString("password");
 				String profile = rs.getString("profile_picture");
-				data.add(new doctor(doctor_id, fname, lname, email, number, address, specilization, exp, qualification, gender, pass, profile));
+				String status = rs.getString("status");
+
+				data.add(new doctor(doctor_id, fname, lname, email, number, address, specilization, exp,
+						qualification, gender, pass, profile, status));
 			}
 
 		} catch (Exception e) {
@@ -169,7 +178,7 @@ public class doctordao {
 		}
 		return data;
 	}
-	
+
 	public List<doctor> RejectedDoctors() {
 		List<doctor> data = new ArrayList<>();
 		try {
@@ -185,12 +194,15 @@ public class doctordao {
 				String number = rs.getString("number");
 				String address = rs.getString("address");
 				String specilization = rs.getString("specialization");
-				String exp = rs.getString("experience");
+				int exp = rs.getInt("experience");
 				String qualification = rs.getString("qualification");
-				String gender  = rs.getString("gender");
+				String gender = rs.getString("gender");
 				String pass = rs.getString("password");
 				String profile = rs.getString("profile_picture");
-				data.add(new doctor(doctor_id, fname, lname, email, number, address, specilization, exp, qualification, gender, pass, profile));
+				String status = rs.getString("status");
+
+				data.add(new doctor(doctor_id, fname, lname, email, number, address, specilization, exp,
+						qualification, gender, pass, profile, status));
 			}
 
 		} catch (Exception e) {
@@ -199,6 +211,5 @@ public class doctordao {
 		}
 		return data;
 	}
-
 
 }

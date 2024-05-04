@@ -93,7 +93,7 @@ public class patientdao {
 				String email = rs.getString("email");
 				String number = rs.getString("number");
 				String address = rs.getString("address");
-				String age = rs.getString("age");
+				int age = rs.getInt("age");
 				String gender  = rs.getString("gender");
 				String pass = rs.getString("password");
 				data.add(new patient(patient_id, lname, email, address, age, number, gender, pass));

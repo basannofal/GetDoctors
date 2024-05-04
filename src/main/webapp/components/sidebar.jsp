@@ -9,7 +9,6 @@ try {
 	Integer role = isLoggedIn ? (Integer) session.getAttribute("userType") : null;
 	Integer userid = isLoggedIn ? (Integer) session.getAttribute("userId") : null;
 
-
 	if (!isLoggedIn) {
 		response.sendRedirect(request.getContextPath() + "adminlogin.jsp");
 	}
@@ -46,22 +45,22 @@ try {
 				class='bx bxs-chart icon'></i> All Doctors</a></li>
 
 		<li class="divider" data-text="Patients">Patients</li>
-		<li><a href="<%=request.getContextPath()%>/views/admin/allpatients.jsp"><i class='bx bx-table icon'></i> All Patients
-				${role} ${userid} ${isLoggedIn } j</a></li>
+		<li><a
+			href="<%=request.getContextPath()%>/views/admin/allpatients.jsp"><i
+				class='bx bx-table icon'></i> All Patients ${role} ${userid}
+				${isLoggedIn } j</a></li>
 
 		<li class="divider" data-text="Disease">Disease</li>
-		<li><a href="#"><i class='bx bxs-notepad icon'></i> Disease <i
-				class='bx bx-chevron-right icon-right'></i></a>
-			<ul class="side-dropdown">
-				<li><a href="#">All Disease</a></li>
-				<li><a href="#">Add Disease</a></li>
-			</ul></li>
+		<li><a
+			href="<%=request.getContextPath()%>/views/admin/alldisease.jsp"><i
+				class='bx bxs-notepad icon'></i> Disease</a></li>
 
 		<li class="divider" data-text="Feedback">Feedback</li>
-		<li><a href="#"><i class='bx bx-table icon'></i> Feedbacks</a></li>
+		<li><a
+			href="<%=request.getContextPath()%>/views/admin/allfeedback.jsp"><i
+				class='bx bx-table icon'></i> Feedbacks</a></li>
 
-		<li class="divider" data-text="Profile">Profile</li>
-		<li><a href="#"><i class='bx bx-table icon'></i> Profile</a></li>
+
 	</ul>
 
 </section>
