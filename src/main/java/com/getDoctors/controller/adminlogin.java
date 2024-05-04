@@ -53,6 +53,7 @@ public class adminlogin extends HttpServlet {
 		if (isAuth != 0) {
 			HttpSession session = request.getSession();
 			session.setAttribute("userType", 1);
+			session.setAttribute("userId", isAuth);
 			response.sendRedirect("views/admin/admindashboard.jsp");
 		} else {
 			request.setAttribute("errorMsg", "Invalid username or password");

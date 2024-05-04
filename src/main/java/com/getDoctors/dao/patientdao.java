@@ -3,6 +3,11 @@ package com.getDoctors.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.getDoctors.model.doctor;
+import com.getDoctors.model.patient;
 
 public class patientdao {
 
@@ -72,5 +77,34 @@ public class patientdao {
 		System.out.println(patid);
 		return patid;
 	}
+	
+	
+	public List<patient> Allpatients() {
+		List<patient> data = new ArrayList<>();
+		try {
+			Connection conn = conObj.dbconnect();
+			PreparedStatement ps = conn.prepareStatement("SELECT * FROM `patient`;");
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+				int patient_id = rs.getInt("patient_id");
+				String fname = rs.getString("name");
+				String lname = rs.getString("name");
+				String email = rs.getString("email");
+				String number = rs.getString("number");
+				String address = rs.getString("address");
+				String age = rs.getString("age");
+				String gender  = rs.getString("gender");
+				String pass = rs.getString("password");
+				data.add(new patient(patient_id, lname, email, address, age, number, gender, pass));
+			}
+
+		} catch (Exception e) {
+			System.out.print(e);
+			e.printStackTrace();
+		}
+		return data;
+	}
+
 	
 }

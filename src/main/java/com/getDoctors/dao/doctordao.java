@@ -3,6 +3,10 @@ package com.getDoctors.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.getDoctors.model.doctor;
 
 public class doctordao {
 	dbconnection conObj = new dbconnection();
@@ -75,5 +79,126 @@ public class doctordao {
 		System.out.println(patid);
 		return patid;
 	}
+	
+	public List<doctor> AllDoctors() {
+		List<doctor> data = new ArrayList<>();
+		try {
+			Connection conn = conObj.dbconnect();
+			PreparedStatement ps = conn.prepareStatement("SELECT * FROM `doctor`;");
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+				int doctor_id = rs.getInt("doctor_id");
+				String fname = rs.getString("name");
+				String lname = rs.getString("name");
+				String email = rs.getString("email");
+				String number = rs.getString("number");
+				String address = rs.getString("address");
+				String specilization = rs.getString("specialization");
+				String exp = rs.getString("experience");
+				String qualification = rs.getString("qualification");
+				String gender  = rs.getString("gender");
+				String pass = rs.getString("password");
+				String profile = rs.getString("profile_picture");
+				data.add(new doctor(doctor_id, fname, lname, email, number, address, specilization, exp, qualification, gender, pass, profile));
+			}
+
+		} catch (Exception e) {
+			System.out.print(e);
+			e.printStackTrace();
+		}
+		return data;
+	}
+
+	public List<doctor> ApproveDoctors() {
+		List<doctor> data = new ArrayList<>();
+		try {
+			Connection conn = conObj.dbconnect();
+			PreparedStatement ps = conn.prepareStatement("SELECT * FROM `doctor` where status=1;");
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+				int doctor_id = rs.getInt("doctor_id");
+				String fname = rs.getString("name");
+				String lname = rs.getString("name");
+				String email = rs.getString("email");
+				String number = rs.getString("number");
+				String address = rs.getString("address");
+				String specilization = rs.getString("specialization");
+				String exp = rs.getString("experience");
+				String qualification = rs.getString("qualification");
+				String gender  = rs.getString("gender");
+				String pass = rs.getString("password");
+				String profile = rs.getString("profile_picture");
+				data.add(new doctor(doctor_id, fname, lname, email, number, address, specilization, exp, qualification, gender, pass, profile));
+			}
+
+		} catch (Exception e) {
+			System.out.print(e);
+			e.printStackTrace();
+		}
+		return data;
+	}
+
+	public List<doctor> RequestedDoctors() {
+		List<doctor> data = new ArrayList<>();
+		try {
+			Connection conn = conObj.dbconnect();
+			PreparedStatement ps = conn.prepareStatement("SELECT * FROM `doctor` where status=0;");
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+				int doctor_id = rs.getInt("doctor_id");
+				String fname = rs.getString("name");
+				String lname = rs.getString("name");
+				String email = rs.getString("email");
+				String number = rs.getString("number");
+				String address = rs.getString("address");
+				String specilization = rs.getString("specialization");
+				String exp = rs.getString("experience");
+				String qualification = rs.getString("qualification");
+				String gender  = rs.getString("gender");
+				String pass = rs.getString("password");
+				String profile = rs.getString("profile_picture");
+				data.add(new doctor(doctor_id, fname, lname, email, number, address, specilization, exp, qualification, gender, pass, profile));
+			}
+
+		} catch (Exception e) {
+			System.out.print(e);
+			e.printStackTrace();
+		}
+		return data;
+	}
+	
+	public List<doctor> RejectedDoctors() {
+		List<doctor> data = new ArrayList<>();
+		try {
+			Connection conn = conObj.dbconnect();
+			PreparedStatement ps = conn.prepareStatement("SELECT * FROM `doctor` where status=2;");
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+				int doctor_id = rs.getInt("doctor_id");
+				String fname = rs.getString("name");
+				String lname = rs.getString("name");
+				String email = rs.getString("email");
+				String number = rs.getString("number");
+				String address = rs.getString("address");
+				String specilization = rs.getString("specialization");
+				String exp = rs.getString("experience");
+				String qualification = rs.getString("qualification");
+				String gender  = rs.getString("gender");
+				String pass = rs.getString("password");
+				String profile = rs.getString("profile_picture");
+				data.add(new doctor(doctor_id, fname, lname, email, number, address, specilization, exp, qualification, gender, pass, profile));
+			}
+
+		} catch (Exception e) {
+			System.out.print(e);
+			e.printStackTrace();
+		}
+		return data;
+	}
+
 
 }
