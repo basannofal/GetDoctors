@@ -134,6 +134,39 @@
 	<%
 	}
 	%>
+	
+	
+	
+	
+	
+		<%
+	if (roleid != 0 && roleid == 3) {
+	%>
+	<ul class="side-menu">
+		<li><a href="#" class="active"><i
+				class='bx bxs-dashboard icon'></i> Dashboard</a></li>
+		
+		<li class="divider" data-text="My Appointment">My Appointment</li>
+		<li><a
+			href="<%=request.getContextPath()%>/views/patientPanel/patientAppointments.jsp?ptid=<%=userid%>"><i
+				class='bx bx-table icon'></i> Appointment</a></li>
+
+		<li class="divider" data-text="Feedback">Feedbacks</li>
+		<li><a
+			href="<%=request.getContextPath()%>/views/patientPanel/patientfeedback.jsp?ptid=<%=userid%>"><i
+				class='bx bx-table icon'></i> Feedbacks</a></li>
+
+	<li class="divider" data-text="Profile">Profile</li>
+		<li><a
+			href="<%=request.getContextPath()%>/views/patientPanel/patientprofile.jsp?ptid=<%=userid%>"><i
+				class='bx bx-table icon'></i> Profile</a></li>
+
+
+	</ul>
+
+	<%
+	}
+	%>
 
 
 </section>

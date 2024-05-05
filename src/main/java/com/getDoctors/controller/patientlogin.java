@@ -48,9 +48,10 @@ public class patientlogin extends HttpServlet {
 
 		if (isAuth != 0) {
 			HttpSession session = request.getSession();
-			session.setAttribute("userType", 3);
+			int role = 3;
+			session.setAttribute("userType", role);
 			session.setAttribute("userId", isAuth);
-			response.sendRedirect("admindashboard.jsp");
+			response.sendRedirect("index.jsp");
 		} else {
 			request.setAttribute("errorMsg", "Invalid username or password");
 			RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
