@@ -114,6 +114,42 @@ public class doctordao {
 	}
 	
 	
+	public List<doctor> searchDoctors(String query) {
+	    List<doctor> data = new ArrayList<>();
+	    try {
+	        Connection conn = conObj.dbconnect();
+	        PreparedStatement ps = conn.prepareStatement("SELECT * FROM doctor WHERE name LIKE ? OR specialization LIKE ?");
+	        ps.setString(1, "%" + query + "%");
+	        ps.setString(2, "%" + query + "%");
+	        ResultSet rs = ps.executeQuery();
+
+	        while (rs.next()) {
+	            int doctor_id = rs.getInt("doctor_id");
+	            String fname = rs.getString("name");
+	            String lname = rs.getString("name");
+	            String email = rs.getString("email");
+	            String number = rs.getString("number");
+	            String address = rs.getString("address");
+	            String specilization = rs.getString("specialization");
+	            int exp = rs.getInt("experience");
+	            String qualification = rs.getString("qualification");
+	            String gender = rs.getString("gender");
+	            String pass = rs.getString("password");
+	            String profile = rs.getString("profile_picture");
+	            String status = rs.getString("status");
+
+	            data.add(new doctor(doctor_id, fname, lname, email, number, address, specilization, exp,
+	                    qualification, gender, pass, profile, status));
+	        }
+
+	    } catch (Exception e) {
+	        System.out.print(e);
+	        e.printStackTrace();
+	    }
+	    return data;
+	}
+
+	
 	
 	
 	

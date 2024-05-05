@@ -17,6 +17,25 @@
 
 <!-- MAIN CSS -->
 <link rel="stylesheet" href="assests/client/css/tooplate-style.css">
+
+<!-- Add jQuery library -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Custom JavaScript code -->
+<script>
+	$(document).ready(
+			function() {
+				// Check if the search query parameter exists
+				var queryParam = new URLSearchParams(window.location.search)
+						.get('query');
+				if (!queryParam) {
+					// If no query parameter, trigger search to fetch all doctors
+					$('#searchInput').trigger('submit');
+				}
+			});
+</script>
+
 </head>
 
 <body id="top" data-spy="scroll" data-target=".navbar-collapse"
@@ -24,8 +43,7 @@
 
 	<%!int roleid = 0;
 	int userid = 0;
-	boolean isLoggedIn = false;
-	%>
+	boolean isLoggedIn = false;%>
 
 	<%
 	try {
@@ -55,38 +73,13 @@
 
 
 	<!-- MAKE AN APPOINTMENT -->
-	<section id="appointment" data-stellar-background-ratio="3">
-		<div class="container">
-			<div class="row">
 
-				<div class="col-md-6 col-sm-6">
-					<img src="assests/client/images/appointment-image.jpg"
-						class="img-responsive" alt="">
-				</div>
+		<%
+		String query = request.getParameter("query");
+		String ptid = request.getParameter("ptid");
+		%>
 
-				<div class="col-md-6 col-sm-6">
-					<!-- CONTACT FORM HERE -->
-					<div class="section-title wow fadeInUp" data-wow-delay="0.4s">
-						<h2>Welcome to Our Expert Medical Team</h2>
-					</div>
-					<div class="wow fadeInUp" data-wow-delay="0.8s">
-						<p>At Health Center, we're proud to introduce our esteemed
-							panel of doctors, all dedicated to providing exceptional
-							healthcare services. Our team comprises highly skilled
-							professionals from various medical specialties, committed to
-							delivering personalized care and ensuring the well-being of our
-							patients.</p>
-						<p>Thank you for choosing Health Center for your healthcare
-							needs. We look forward to serving you and helping you achieve
-							optimal health and well-being.</p>
-					</div>
-				</div>
-
-			</div>
-		</div>
-	</section>
-
-
+		
 
 	<!-- TEAM -->
 	<section id="team" data-stellar-background-ratio="1">
@@ -96,15 +89,13 @@
 				<div class="col-md-12 col-sm-12"
 					style="display: flex; justify-content: space-between; align-items: center;">
 					<div class="about-info">
-						<h2 class="wow fadeInUp" data-wow-delay="0.1s">Our Doctors</h2>
+						<h2 class="wow fadeInUp" data-wow-delay="0.1s">Searched Doctors (<%=query %>)</h2>
 					</div>
 					<div>
 						<form class="form-inline" action="searchDoctors" method="post">
-							<input class="form-control mr-sm-2" type="search"
-								placeholder="Find Doctor Name, Specilization"
-								aria-label="Search" id="searchInput" name="query">
-								<input class="form-control mr-sm-2" type="hidden"
-								name="ptid" value="<%=userid %>">
+							<input class="form-control mr-sm-2" type="search" name="query"
+								placeholder="Find Doctor Name, Specialization"
+								aria-label="Search" id="searchInput">
 							<button class="btn btn-outline-success my-2 my-sm-0"
 								type="submit">Find</button>
 						</form>
@@ -116,10 +107,9 @@
 
 
 				<%
-				doctordao ddao = new doctordao();
-				List<doctor> doctors = ddao.AllDoctors();
-
-				for (doctor dr : doctors) {
+				List<doctor> doctors = (List<doctor>) request.getAttribute("doctors");
+				if (doctors != null && !doctors.isEmpty()) {
+					for (doctor dr : doctors) {
 				%>
 
 				<div class="col-md-4 col-sm-6">
@@ -146,19 +136,18 @@
 							</div>
 							<div class="team-contact-info"
 								style="padding-bottom: 20px; display: flex; justify-content: space-between;">
-								
-<%
+
+								<%
 								if (isLoggedIn && userid == 3) {
 								%>
 								<a
-									href="feedback.jsp?ptid=<%=userid%>&drid=<%=dr.getDoctor_id()%>&drname=<%=dr.getFname()%>">
+									href="feedback.jsp?drid=<%=dr.getDoctor_id()%>&drname=<%=dr.getFname()%>">
 									<button class="btn btn-outline-primary">Give Feedback</button>
 								</a>
 								<%
 								} else {
 								%>
-								<a
-									href="login.jsp">
+								<a href="login.jsp">
 									<button class="btn btn-outline-primary">Give Feedback</button>
 								</a>
 								<%
@@ -177,8 +166,7 @@
 								<%
 								} else {
 								%>
-								<a
-									href="login.jsp">
+								<a href="login.jsp">
 									<button class="btn btn-primary">Make appointment</button>
 								</a>
 								<%
@@ -193,7 +181,12 @@
 					</div>
 				</div>
 
-
+				<%
+				}
+				} else {
+				%>
+				<!-- No doctors found message -->
+				<p>No doctors found.</p>
 
 				<%
 				}
@@ -219,7 +212,7 @@
 	<script src="assests/client/js/smoothscroll.js"></script>
 	<script src="assests/client/js/owl.carousel.min.js"></script>
 	<script src="assests/client/js/custom.js"></script>
-	
+
 
 </body>
 </html>

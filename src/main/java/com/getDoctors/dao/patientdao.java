@@ -108,5 +108,36 @@ public class patientdao {
 
 	
 	
+	public patient patientsById(int id) {
+		patient data = null;
+		try {
+			Connection conn = conObj.dbconnect();
+			PreparedStatement ps = conn.prepareStatement("SELECT * FROM `patient` where patient_id = ?;");
+			ps.setInt(1, id);
+
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+				int patient_id = rs.getInt("patient_id");
+				String fname = rs.getString("name");
+				String lname = rs.getString("name");
+				String email = rs.getString("email");
+				String number = rs.getString("number");
+				String address = rs.getString("address");
+				int age = rs.getInt("age");
+				String gender  = rs.getString("gender");
+				String pass = rs.getString("password");
+				data = new patient(patient_id, lname, email, address, age, number, gender, pass);
+			}
+
+		} catch (Exception e) {
+			System.out.print(e);
+			e.printStackTrace();
+		}
+		return data;
+	}
+
+	
+	
 
 }

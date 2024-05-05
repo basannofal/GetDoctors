@@ -58,7 +58,7 @@ try {
 			<ul class="nav navbar-nav navbar-right">
 
 				<%
-				if (isLoggedIn) {
+				if (isLoggedIn && userid == 3) {
 				%>
 				<li><a href="index.jsp" class="smoothScroll">Home</a></li>
 				<li><a href="about.jsp" class="smoothScroll">About Us</a></li>
