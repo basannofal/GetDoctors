@@ -52,7 +52,8 @@ public class adminlogin extends HttpServlet {
 
 		if (isAuth != 0) {
 			HttpSession session = request.getSession();
-			session.setAttribute("userType", 1);
+			int role = 1;
+			session.setAttribute("userType", role);
 			session.setAttribute("userId", isAuth);
 			response.sendRedirect("views/admin/admindashboard.jsp");
 		} else {

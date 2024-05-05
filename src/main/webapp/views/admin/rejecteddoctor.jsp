@@ -90,8 +90,8 @@
 											<div class="menu">
 												<i class='bx bx-dots-horizontal-rounded icon'></i>
 												<ul class="menu-link">
-													<li><a href="edit?id=<c:out value='${user.id}'/>">Edit</a></li>
-													<li><a href="delete?id=<c:out value='${user.id}'/>">Delete</a></li>
+													<li><a href="edit?id=<c:out value='${user.id}'/>">Approve Doctor</a></li>
+													<li><a href="delete?id=<c:out value='${user.id}'/>">Reject Doctor </a></li>
 												</ul>
 											</div>
 										</div>

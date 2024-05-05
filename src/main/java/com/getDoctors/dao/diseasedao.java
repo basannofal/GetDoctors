@@ -54,5 +54,25 @@ public class diseasedao {
 		}
 		return data;
 	}
+	
+	
+	public String DiseaseById(int id) {
+		String data = "disease";
+		try {
+			Connection conn = conObj.dbconnect();
+			PreparedStatement ps = conn.prepareStatement("SELECT disease_name FROM `disease` where disease_id = ?;");
+			ps.setInt(1, id);
+
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				data = rs.getString("disease_name");
+			}
+
+		} catch (Exception e) {
+			System.out.print(e);
+			e.printStackTrace();
+		}
+		return data;
+	}
 
 }

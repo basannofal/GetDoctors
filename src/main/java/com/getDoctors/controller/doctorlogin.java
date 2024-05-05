@@ -52,7 +52,8 @@ public class doctorlogin extends HttpServlet {
 
 		if (isAuth != 0) {
 			HttpSession session = request.getSession();
-			session.setAttribute("userType", 2);
+			int role = 2;
+			session.setAttribute("userType", role);
 			session.setAttribute("userId", isAuth);
 			response.sendRedirect("views/doctorPanel/doctordashboard.jsp");
 		} else {

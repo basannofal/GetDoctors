@@ -2,27 +2,61 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<%
-try {
-	// Check if the user is logged in
-	boolean isLoggedIn = (session != null && session.getAttribute("userType") != null);
-	Integer role = isLoggedIn ? (Integer) session.getAttribute("userType") : null;
-	Integer userid = isLoggedIn ? (Integer) session.getAttribute("userId") : null;
 
-	if (!isLoggedIn) {
-		response.sendRedirect(request.getContextPath() + "adminlogin.jsp");
-	}
-} catch (Exception e) {
-	e.printStackTrace();
-	out.print("" + e);
-}
-%>
 
 <!-- SIDEBAR -->
 <section id="sidebar">
 
+	<%!int roleid = 0; int userid = 0; boolean isLoggedIn= false;%>
+
+	<%
+	try {
+		// Check if the user is logged in
+		isLoggedIn = (session != null && session.getAttribute("userType") != null);
+		Integer role = isLoggedIn ? (Integer) session.getAttribute("userType") : null;
+		int uid = isLoggedIn ? (int) session.getAttribute("userId") : null;
+		roleid = role;
+		userid = uid;
+		if (!isLoggedIn) {
+			response.sendRedirect(request.getContextPath() + "adminlogin.jsp");
+		}
+	} catch (Exception e) {
+		e.printStackTrace();
+		out.print("" + e);
+	}
+	%>
+
 	<a href="#" class="brand"><i class='bx bxs-smile icon'></i>
-		AdminSite</a>
+		
+		<%
+	if (roleid != 0 && roleid == 1) {
+	%>
+	Admin Panel
+		<%
+	}
+	%>
+
+	<%
+	if (roleid != 0 && roleid == 2) {
+	%>
+	Doctor Panel
+	<%
+	}
+	%>
+	
+	<%
+	if (roleid != 0 && roleid == 3) {
+	%>
+	Patient Panel
+	<%
+	}
+	%>
+
+		</a>
+
+	<%
+	if (roleid != 0 && roleid == 1) {
+	%>
 	<ul class="side-menu">
 		<li><a href="#" class="active"><i
 				class='bx bxs-dashboard icon'></i> Dashboard</a></li>
@@ -62,6 +96,45 @@ try {
 
 
 	</ul>
+
+	<%
+	}
+	%>
+
+	<%
+	if (roleid != 0 && roleid == 2) {
+	%>
+	<ul class="side-menu">
+		<li><a href="#" class="active"><i
+				class='bx bxs-dashboard icon'></i> Dashboard</a></li>
+		
+		<li class="divider" data-text="Appointment">Appointment</li>
+		<li><a
+			href="<%=request.getContextPath()%>/views/doctorPanel/doctorappointment.jsp?drid=<%=userid%>"><i
+				class='bx bx-table icon'></i> Appointment</a></li>
+
+		<li class="divider" data-text="Disease">Disease</li>
+		<li><a
+			href="<%=request.getContextPath()%>/views/doctorPanel/doctorskills.jsp?drid=<%=userid%>"><i
+				class='bx bxs-notepad icon'></i> Skills</a></li>
+
+		<li class="divider" data-text="Feedback">Feedback</li>
+		<li><a
+			href="<%=request.getContextPath()%>/views/doctorPanel/doctorfeedback.jsp?drid=<%=userid%>"><i
+				class='bx bx-table icon'></i> Feedbacks</a></li>
+
+	<li class="divider" data-text="Profile">Profile</li>
+		<li><a
+			href="<%=request.getContextPath()%>/views/doctorPanel/doctorprofile.jsp?drid=<%=userid%>"><i
+				class='bx bx-table icon'></i> Profile</a></li>
+
+
+	</ul>
+
+	<%
+	}
+	%>
+
 
 </section>
 <!-- SIDEBAR -->

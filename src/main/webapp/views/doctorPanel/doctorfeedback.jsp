@@ -1,3 +1,5 @@
+<%@page import="com.getDoctors.model.feedback"%>
+<%@page import="com.getDoctors.dao.feedbackdao"%>
 <%@page import="com.getDoctors.model.doctor"%>
 <%@page import="java.util.List"%>
 <%@page import="com.getDoctors.dao.doctordao"%>
@@ -39,14 +41,7 @@
 				<div class="content-data">
 					<div class="head">
 						<h3>All Doctors</h3>
-						<div class="menu">
-							<i class='bx bx-dots-horizontal-rounded icon'></i>
-							<ul class="menu-link">
-								<li><a href="#">Edit</a></li>
-								<li><a href="#">Save</a></li>
-								<li><a href="#">Remove</a></li>
-							</ul>
-						</div>
+
 					</div>
 					<div>
 
@@ -60,29 +55,29 @@
 						<table id="customers">
 							<tr>
 								<th>Id</th>
-								<th>Name</th>
-								<th>Email</th>
-								<th>Number</th>
-								<th>Specialization</th>
-								<th>Qualification</th>
-								<th>Experience</th>
+								<th>Message</th>
+								<th>Date & Time</th>
+								<th>Rating</th>
+								<th>Doctor</th>
+								<th>Patient</th>
 								<th>Action</th>
 							</tr>
 							<tbody>
 								<%
-								doctordao ddao = new doctordao();
-								List<doctor> doctors = ddao.RequestedDoctors();
+								feedbackdao fdao = new feedbackdao();
+								int drid = Integer.parseInt(request.getParameter("drid"));
+								List<feedback> feedbacks = fdao.DoctorFeedback(drid);
 
-								for (doctor dr : doctors) {
+								for (feedback dr : feedbacks ) {
 								%>
 								<tr>
+									<td><%=dr.getReview_id()%></td>
+									<td><%=dr.getReview_text()%></td>
+									<td><%=dr.getReview_date_time()%></td>
+									<td><%=dr.getRating()%></td>
 									<td><%=dr.getDoctor_id()%></td>
-									<td><%=dr.getFname()%></td>
-									<td><%=dr.getEmail()%></td>
-									<td><%=dr.getNumber()%></td>
-									<td><%=dr.getSpecilization()%></td>
-									<td><%=dr.getQualification()%></td>
-									<td><%=dr.getExp() + ""%></td>
+									<td><%=dr.getPatient_id()%></td>
+									
 									<td>
 										<div class="head">
 
@@ -90,13 +85,8 @@
 											<div class="menu">
 												<i class='bx bx-dots-horizontal-rounded icon'></i>
 												<ul class="menu-link">
-													<li><a
-														href="../../DoctorApprovalServlet?action=approve&doctorId=<%=dr.getDoctor_id()%>">Approve
-															Doctor</a></li>
-													<li><a
-														href="../../DoctorApprovalServlet?action=reject&doctorId=<%=dr.getDoctor_id()%>">Reject
-															Doctor</a></li>
-
+													<li><a href="edit?id=<c:out value='${user.id}'/>">Edit</a></li>
+													<li><a href="delete?id=<c:out value='${user.id}'/>">Delete</a></li>
 												</ul>
 											</div>
 										</div>

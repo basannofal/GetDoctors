@@ -1,3 +1,6 @@
+<%@page import="com.getDoctors.dao.diseasedao"%>
+<%@page import="com.getDoctors.model.appointment"%>
+<%@page import="com.getDoctors.dao.appointmentdao"%>
 <%@page import="com.getDoctors.model.doctor"%>
 <%@page import="java.util.List"%>
 <%@page import="com.getDoctors.dao.doctordao"%>
@@ -13,6 +16,22 @@
 <link rel="stylesheet" href="../../assests/css/adminStyle.css">
 
 <link rel="stylesheet" href="../../assests/css/table.css">
+
+<style>
+.normal-row {
+	/* Style for normal row */
+	
+}
+
+.green-row {
+	color: green; /* Style for green font */
+}
+
+.red-row {
+	color: red; /* Style for red font */
+}
+</style>
+
 
 </head>
 <body>
@@ -39,14 +58,7 @@
 				<div class="content-data">
 					<div class="head">
 						<h3>All Doctors</h3>
-						<div class="menu">
-							<i class='bx bx-dots-horizontal-rounded icon'></i>
-							<ul class="menu-link">
-								<li><a href="#">Edit</a></li>
-								<li><a href="#">Save</a></li>
-								<li><a href="#">Remove</a></li>
-							</ul>
-						</div>
+
 					</div>
 					<div>
 
@@ -62,27 +74,39 @@
 								<th>Id</th>
 								<th>Name</th>
 								<th>Email</th>
-								<th>Number</th>
-								<th>Specialization</th>
-								<th>Qualification</th>
-								<th>Experience</th>
+								<th>Date</th>
+								<th>Time</th>
+								<th>Additional Note</th>
+								<th>Disease</th>
 								<th>Action</th>
 							</tr>
 							<tbody>
 								<%
-								doctordao ddao = new doctordao();
-								List<doctor> doctors = ddao.RequestedDoctors();
+								appointmentdao fdao = new appointmentdao();
+								diseasedao ddao = new diseasedao();
+								int drid = Integer.parseInt(request.getParameter("drid"));
+								List<appointment> appointments = fdao.DoctorAppointment(drid);
 
-								for (doctor dr : doctors) {
+								for (appointment dr : appointments) {
+									String str = ddao.DiseaseById(Integer.parseInt(dr.getDisease()));
+									String rowClass = "normal-row"; // Default class
+									switch (dr.getAppointment_status()) {
+									case "1":
+										rowClass = "green-row"; // Green font
+										break;
+									case "2":
+										rowClass = "red-row"; // Red font
+										break;
+									}
 								%>
-								<tr>
-									<td><%=dr.getDoctor_id()%></td>
-									<td><%=dr.getFname()%></td>
-									<td><%=dr.getEmail()%></td>
-									<td><%=dr.getNumber()%></td>
-									<td><%=dr.getSpecilization()%></td>
-									<td><%=dr.getQualification()%></td>
-									<td><%=dr.getExp() + ""%></td>
+								<tr class="<%=rowClass%>">
+									<td><%=dr.getAppointment_id()%></td>
+									<td><%=dr.getPatient_name()%></td>
+									<td><%=dr.getPatient_email()%></td>
+									<td><%=dr.getAppointment_date()%></td>
+									<td><%=dr.getAppointment_time()%></td>
+									<td><%=dr.getAdditional_note()%></td>
+									<td><%=str%></td>
 									<td>
 										<div class="head">
 
@@ -91,11 +115,11 @@
 												<i class='bx bx-dots-horizontal-rounded icon'></i>
 												<ul class="menu-link">
 													<li><a
-														href="../../DoctorApprovalServlet?action=approve&doctorId=<%=dr.getDoctor_id()%>">Approve
-															Doctor</a></li>
+														href="../../appointmetnApprovalServlet?action=approve&drid=<%=dr.getDoctor_id()%>&appId=<%=dr.getAppointment_id()%>">Approve
+													</a></li>
 													<li><a
-														href="../../DoctorApprovalServlet?action=reject&doctorId=<%=dr.getDoctor_id()%>">Reject
-															Doctor</a></li>
+														href="../../appointmetnApprovalServlet?action=reject&drid=<%=dr.getDoctor_id()%>&appId=<%=dr.getAppointment_id()%>">Reject
+													</a></li>
 
 												</ul>
 											</div>

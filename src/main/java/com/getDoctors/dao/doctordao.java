@@ -113,6 +113,42 @@ public class doctordao {
 		return data;
 	}
 
+	public doctor GetDoctorByID(int id) {
+		doctor data = null;
+		try {
+			Connection conn = conObj.dbconnect();
+			PreparedStatement ps = conn.prepareStatement("SELECT * FROM `doctor` where doctor_id=?;");
+			ps.setInt(1, id);
+			
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+				int doctor_id = rs.getInt("doctor_id");
+				String fname = rs.getString("name");
+				String lname = rs.getString("name");
+				String email = rs.getString("email");
+				String number = rs.getString("number");
+				String address = rs.getString("address");
+				String specilization = rs.getString("specialization");
+				int exp = rs.getInt("experience");
+				String qualification = rs.getString("qualification");
+				String gender = rs.getString("gender");
+				String pass = rs.getString("password");
+				String profile = rs.getString("profile_picture");
+				String status = rs.getString("status");
+
+				data = new doctor(doctor_id, fname, lname, email, number, address, specilization, exp,
+						qualification, gender, pass, profile, status);
+			}
+
+		} catch (Exception e) {
+			System.out.print(e);
+			e.printStackTrace();
+		}
+		return data;
+	}
+	
+	
 	public List<doctor> ApproveDoctors() {
 		List<doctor> data = new ArrayList<>();
 		try {
@@ -211,5 +247,41 @@ public class doctordao {
 		}
 		return data;
 	}
+	
+	public boolean approveDoctor(int id) {
+		System.out.println(" nn   REAched");
+		try {
+				Connection conn = conObj.dbconnect();
+				PreparedStatement ps = conn.prepareStatement("UPDATE `doctor` SET status = 1 where doctor_id = ?");
+				ps.setInt(1, id);
+
+				int rowsInserted = ps.executeUpdate();
+				return rowsInserted > 0;
+		} catch (Exception e) {
+			System.out.println(e);
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
+	
+	public boolean rejectDoctor(int id) {
+		System.out.println(" nn   REAched");
+		try {
+				Connection conn = conObj.dbconnect();
+				PreparedStatement ps = conn.prepareStatement("UPDATE `doctor` SET status = 2 where doctor_id = ?");
+				ps.setInt(1, id);
+
+				int rowsInserted = ps.executeUpdate();
+				return rowsInserted > 0;
+		} catch (Exception e) {
+			System.out.println(e);
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	
+	
 
 }
