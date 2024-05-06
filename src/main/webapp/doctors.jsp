@@ -24,8 +24,7 @@
 
 	<%!int roleid = 0;
 	int userid = 0;
-	boolean isLoggedIn = false;
-	%>
+	boolean isLoggedIn = false;%>
 
 	<%
 	try {
@@ -60,8 +59,8 @@
 			<div class="row">
 
 				<div class="col-md-6 col-sm-6">
-					<img src="assests/client/images/appointment-image.jpg"
-						class="img-responsive" alt="">
+					<img src="assests/client/images/img/12.png" class="img-responsive"
+						alt="">
 				</div>
 
 				<div class="col-md-6 col-sm-6">
@@ -102,9 +101,9 @@
 						<form class="form-inline" action="searchDoctors" method="post">
 							<input class="form-control mr-sm-2" type="search"
 								placeholder="Find Doctor Name, Specilization"
-								aria-label="Search" id="searchInput" name="query">
-								<input class="form-control mr-sm-2" type="hidden"
-								name="ptid" value="<%=userid %>">
+								aria-label="Search" id="searchInput" name="query"> <input
+								class="form-control mr-sm-2" type="hidden" name="ptid"
+								value="<%=userid%>">
 							<button class="btn btn-outline-success my-2 my-sm-0"
 								type="submit">Find</button>
 						</form>
@@ -146,8 +145,8 @@
 							</div>
 							<div class="team-contact-info"
 								style="padding-bottom: 20px; display: flex; justify-content: space-between;">
-								
-<%
+
+								<%
 								if (isLoggedIn && userid == 3) {
 								%>
 								<a
@@ -157,8 +156,7 @@
 								<%
 								} else {
 								%>
-								<a
-									href="login.jsp">
+								<a href="login.jsp">
 									<button class="btn btn-outline-primary">Give Feedback</button>
 								</a>
 								<%
@@ -177,8 +175,7 @@
 								<%
 								} else {
 								%>
-								<a
-									href="login.jsp">
+								<a href="login.jsp">
 									<button class="btn btn-primary">Make appointment</button>
 								</a>
 								<%
@@ -219,7 +216,7 @@
 	<script src="assests/client/js/smoothscroll.js"></script>
 	<script src="assests/client/js/owl.carousel.min.js"></script>
 	<script src="assests/client/js/custom.js"></script>
-	
+
 
 </body>
 </html>

@@ -21,11 +21,10 @@
 
 <body id="top" data-spy="scroll" data-target=".navbar-collapse"
 	data-offset="50">
-	
-		<%!int roleid = 0;
+
+	<%!int roleid = 0;
 	int userid = 0;
-	boolean isLoggedIn = false;
-	%>
+	boolean isLoggedIn = false;%>
 
 	<%
 	try {
@@ -52,134 +51,20 @@
 
 
 	<jsp:include page="components/client/navbar.jsp"></jsp:include>
+	<!-- ABOUT -->
+	<section id="contact">
+		<div class="container"></div>
+		</div>
+	</section>
 
 
 	<!-- ABOUT -->
-	<section id="about">
-		<div class="container">
-			<div class="row">
-
-				<div class="col-md-6 col-sm-6">
-					<div class="about-info">
-						<h2 class="wow fadeInUp" data-wow-delay="0.6s">
-							Welcome to Your <i class="fa fa-h-square"></i>ealth Center
-						</h2>
-						<div class="wow fadeInUp" data-wow-delay="0.8s">
-							<p>Aenean luctus lobortis tellus, vel ornare enim molestie
-								condimentum. Curabitur lacinia nisi vitae velit volutpat
-								venenatis.</p>
-							<p>Sed a dignissim lacus. Quisque fermentum est non orci
-								commodo, a luctus urna mattis. Ut placerat, diam a tempus
-								vehicula.</p>
-						</div>
-						<figure class="profile wow fadeInUp" data-wow-delay="1s">
-							<img src="assests/client/images/author-image.jpg"
-								class="img-responsive" alt="">
-							<figcaption>
-								<h3>Dr. Neil Jackson</h3>
-								<p>General Principal</p>
-							</figcaption>
-						</figure>
-					</div>
-				</div>
-
-			</div>
-		</div>
+	<section id="contact">
+		<img src="assests/client/images/contact.png"
+			class="img-responsive" alt="">
 	</section>
 
 
-	<!-- TEAM -->
-	<section id="team" data-stellar-background-ratio="1">
-		<div class="container">
-			<div class="row">
-
-				<%
-				doctordao ddao = new doctordao();
-				List<doctor> doctors = ddao.First3Doctor();
-
-				for (doctor dr : doctors) {
-				%>
-
-		<div class="col-md-4 col-sm-6">
-					<div class="team-thumb wow fadeInUp" data-wow-delay="0.6s">
-						<img src="assests/img/doctor.avif" class="img-responsive" alt="">
-
-						<div class="team-info">
-							<h3><%=dr.getFname()%></h3>
-							<p style="margin-top: 10px;">
-								Qualification :
-								<%=dr.getQualification()%></p>
-							<p>
-								Specialization :
-								<%=dr.getSpecilization()%>
-							</p>
-							<div class="team-contact-info">
-								<p>
-									<i class="fa fa-phone"></i>
-									<%=dr.getNumber()%>
-								</p>
-								<p>
-									<i class="fa fa-envelope-o"></i> <a href="#"><%=dr.getEmail()%></a>
-								</p>
-							</div>
-							<div class="team-contact-info"
-								style="padding-bottom: 20px; display: flex; justify-content: space-between;">
-								
-<%
-								if (isLoggedIn && userid == 3) {
-								%>
-								<a
-									href="feedback.jsp?ptid=<%=userid%>&drid=<%=dr.getDoctor_id()%>&drname=<%=dr.getFname()%>">
-									<button class="btn btn-outline-primary">Give Feedback</button>
-								</a>
-								<%
-								} else {
-								%>
-								<a
-									href="login.jsp">
-									<button class="btn btn-outline-primary">Give Feedback</button>
-								</a>
-								<%
-								}
-								%>
-
-
-
-								<%
-								if (isLoggedIn && userid == 3) {
-								%>
-								<a
-									href="appointment.jsp?ptid=<%=userid%>&drid=<%=dr.getDoctor_id()%>&drname=<%=dr.getFname()%>">
-									<button class="btn btn-primary">Make appointment</button>
-								</a>
-								<%
-								} else {
-								%>
-								<a
-									href="login.jsp">
-									<button class="btn btn-primary">Make appointment</button>
-								</a>
-								<%
-								}
-								%>
-
-
-							</div>
-
-						</div>
-
-					</div>
-				</div>
-
-
-
-
-				<%
-				}
-				%>
-			</div>
-		</div>
-	</section>
 
 
 

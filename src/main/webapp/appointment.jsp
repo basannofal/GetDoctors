@@ -47,7 +47,7 @@
 			<div class="row">
 
 				<div class="col-md-6 col-sm-6">
-					<img src="assests/client/images/appointment-image.jpg"
+					<img src="assests/client/images/img/14.png"
 						class="img-responsive" alt="">
 				</div>
 
