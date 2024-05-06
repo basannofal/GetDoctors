@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>All Doctors</title>
 <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css'
 	rel='stylesheet'>
 <link rel="stylesheet" href="../../assests/css/adminStyle.css">

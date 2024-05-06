@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>My Appoitments</title>
 <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css'
 	rel='stylesheet'>
 <link rel="stylesheet" href="../../assests/css/adminStyle.css">
@@ -71,17 +71,17 @@
 		<jsp:include page="../../components/navbar.jsp"></jsp:include>
 		<!-- MAIN -->
 		<main>
-			<h1 class="title">All Appointments</h1>
+			<h1 class="title">My Appointments</h1>
 			<ul class="breadcrumbs">
 				<li><a href="#">Home</a></li>
 				<li class="divider">/</li>
-				<li><a href="#" class="active">All Appointments</a></li>
+				<li><a href="#" class="active">My Appointments</a></li>
 			</ul>
 
 			<div class="data">
 				<div class="content-data">
 					<div class="head">
-						<h3>All Appointments</h3>
+						<h3>My Appointments</h3>
 
 					</div>
 					<div>

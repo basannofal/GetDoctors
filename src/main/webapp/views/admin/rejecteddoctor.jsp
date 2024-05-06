@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Rejected Doctors</title>
 <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css'
 	rel='stylesheet'>
 <link rel="stylesheet" href="../../assests/css/adminStyle.css">
@@ -28,25 +28,18 @@
 		<jsp:include page="../../components/navbar.jsp"></jsp:include>
 		<!-- MAIN -->
 		<main>
-			<h1 class="title">All Doctors</h1>
+			<h1 class="title">Rejected Doctors</h1>
 			<ul class="breadcrumbs">
 				<li><a href="#">Home</a></li>
 				<li class="divider">/</li>
-				<li><a href="#" class="active">All Doctors</a></li>
+				<li><a href="#" class="active">Rejected Doctors</a></li>
 			</ul>
 
 			<div class="data">
 				<div class="content-data">
 					<div class="head">
-						<h3>All Doctors</h3>
-						<div class="menu">
-							<i class='bx bx-dots-horizontal-rounded icon'></i>
-							<ul class="menu-link">
-								<li><a href="#">Edit</a></li>
-								<li><a href="#">Save</a></li>
-								<li><a href="#">Remove</a></li>
-							</ul>
-						</div>
+						<h3>Rejected Doctors</h3>
+						
 					</div>
 					<div>
 

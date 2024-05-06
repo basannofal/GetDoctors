@@ -27,8 +27,8 @@ try {
 
 			<div class="col-md-8 col-sm-7 text-align-right">
 				<span class="phone-icon"><i class="fa fa-phone"></i>
-					010-060-0160</span> <span class="email-icon"><i
-					class="fa fa-envelope-o"></i> <a href="#">info@company.com</a></span>
+					942-762-8497</span> <span class="email-icon"><i
+					class="fa fa-envelope-o"></i> <a href="#">info@healthcenter.com</a></span>
 			</div>
 
 		</div>
@@ -64,7 +64,7 @@ try {
 				<li><a href="about.jsp" class="smoothScroll">About Us</a></li>
 				<li><a href="doctors.jsp?ptid=<%=userid%>"
 					class="smoothScroll">Doctors</a></li>
-				<li><a href="#google-map" class="smoothScroll">Contact</a></li>
+				<li><a href="contact.jsp" class="smoothScroll">Contact</a></li>
 
 				<li class="appointment-btn"><a href="views/patientPanel/patientdashboard.jsp?ptid=<%=userid%>">Visit
 						Panel</a></li>
@@ -76,7 +76,7 @@ try {
 				<li><a href="index.jsp" class="smoothScroll">Home</a></li>
 				<li><a href="about.jsp" class="smoothScroll">About Us</a></li>
 				<li><a href="doctors.jsp" class="smoothScroll">Doctors</a></li>
-				<li><a href="#google-map" class="smoothScroll">Contact</a></li>
+				<li><a href="contact.jsp" class="smoothScroll">Contact</a></li>
 
 				<li class="appointment-btn"><a href="login.jsp">Login</a></li>
 				<%

@@ -21,6 +21,25 @@
 
 <body id="top" data-spy="scroll" data-target=".navbar-collapse"
 	data-offset="50">
+	
+		<%!int roleid = 0;
+	int userid = 0;
+	boolean isLoggedIn = false;
+	%>
+
+	<%
+	try {
+		// Check if the user is logged in
+		isLoggedIn = (session != null && session.getAttribute("userType") != null);
+		Integer role = isLoggedIn ? (Integer) session.getAttribute("userType") : null;
+		int uid = isLoggedIn ? (int) session.getAttribute("userId") : null;
+		roleid = role;
+		userid = uid;
+
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+	%>
 
 	<!-- PRE LOADER -->
 	<section class="preloader">
@@ -160,9 +179,43 @@
 							</div>
 							<div class="team-contact-info"
 								style="padding-bottom: 20px; display: flex; justify-content: space-between;">
-								<button type="button" class="btn btn-outline-primary">Give
-									Feedback</button>
-								<button class="btn btn-primary">Make appointment</button>
+
+								<%
+								if (isLoggedIn && userid == 3) {
+								%>
+								<a
+									href="feedback.jsp?ptid=<%=userid%>&drid=<%=dr.getDoctor_id()%>&drname=<%=dr.getFname()%>">
+									<button class="btn btn-outline-primary">Give Feedback</button>
+								</a>
+								<%
+								} else {
+								%>
+								<a href="login.jsp">
+									<button class="btn btn-outline-primary">Give Feedback</button>
+								</a>
+								<%
+								}
+								%>
+
+
+
+								<%
+								if (isLoggedIn && userid == 3) {
+								%>
+								<a
+									href="appointment.jsp?ptid=<%=userid%>&drid=<%=dr.getDoctor_id()%>&drname=<%=dr.getFname()%>">
+									<button class="btn btn-primary">Make appointment</button>
+								</a>
+								<%
+								} else {
+								%>
+								<a href="login.jsp">
+									<button class="btn btn-primary">Make appointment</button>
+								</a>
+								<%
+								}
+								%>
+
 
 							</div>
 
@@ -170,6 +223,7 @@
 
 					</div>
 				</div>
+
 
 
 
@@ -181,72 +235,6 @@
 		</div>
 	</section>
 
-
-
-	<!-- MAKE AN APPOINTMENT -->
-	<section id="appointment" data-stellar-background-ratio="3">
-		<div class="container">
-			<div class="row">
-
-				<div class="col-md-6 col-sm-6">
-					<img src="assests/client/images/appointment-image.jpg"
-						class="img-responsive" alt="">
-				</div>
-
-				<div class="col-md-6 col-sm-6">
-					<!-- CONTACT FORM HERE -->
-					<form id="appointment-form" role="form" method="post" action="#">
-
-						<!-- SECTION TITLE -->
-						<div class="section-title wow fadeInUp" data-wow-delay="0.4s">
-							<h2>Make an appointment</h2>
-						</div>
-
-						<div class="wow fadeInUp" data-wow-delay="0.8s">
-							<div class="col-md-6 col-sm-6">
-								<label for="name">Name</label> <input type="text"
-									class="form-control" id="name" name="name"
-									placeholder="Full Name">
-							</div>
-
-							<div class="col-md-6 col-sm-6">
-								<label for="email">Email</label> <input type="email"
-									class="form-control" id="email" name="email"
-									placeholder="Your Email">
-							</div>
-
-							<div class="col-md-6 col-sm-6">
-								<label for="date">Select Date</label> <input type="date"
-									name="date" value="" class="form-control">
-							</div>
-
-							<div class="col-md-6 col-sm-6">
-								<label for="select">Select Department</label> <select
-									class="form-control">
-									<option>General Health</option>
-									<option>Cardiology</option>
-									<option>Dental</option>
-									<option>Medical Research</option>
-								</select>
-							</div>
-
-							<div class="col-md-12 col-sm-12">
-								<label for="telephone">Phone Number</label> <input type="tel"
-									class="form-control" id="phone" name="phone"
-									placeholder="Phone"> <label for="Message">Additional
-									Message</label>
-								<textarea class="form-control" rows="5" id="message"
-									name="message" placeholder="Message"></textarea>
-								<button type="submit" class="form-control" id="cf-submit"
-									name="submit">Submit Button</button>
-							</div>
-						</div>
-					</form>
-				</div>
-
-			</div>
-		</div>
-	</section>
 
 
 	<jsp:include page="components/client/footer.jsp"></jsp:include>

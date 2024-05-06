@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>My Profiles</title>
 <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css'
 	rel='stylesheet'>
 <link rel="stylesheet" href="../../assests/css/adminStyle.css">
@@ -43,11 +43,11 @@
 		<jsp:include page="../../components/navbar.jsp"></jsp:include>
 		<!-- MAIN -->
 		<main>
-			<h1 class="title">Dashboard</h1>
+			<h1 class="title">My Profiles</h1>
 			<ul class="breadcrumbs">
 				<li><a href="#">Home</a></li>
 				<li class="divider">/</li>
-				<li><a href="#" class="active">Dashboard</a></li>
+				<li><a href="#" class="active">My Profiles</a></li>
 			</ul>
 
 			<div class="data">
