@@ -21,11 +21,10 @@
 
 <body id="top" data-spy="scroll" data-target=".navbar-collapse"
 	data-offset="50">
-	
-		<%!int roleid = 0;
+
+	<%!int roleid = 0;
 	int userid = 0;
-	boolean isLoggedIn = false;
-	%>
+	boolean isLoggedIn = false;%>
 
 	<%
 	try {
@@ -65,19 +64,26 @@
 							Welcome to Your <i class="fa fa-h-square"></i>ealth Center
 						</h2>
 						<div class="wow fadeInUp" data-wow-delay="0.8s">
-							<p>Aenean luctus lobortis tellus, vel ornare enim molestie
-								condimentum. Curabitur lacinia nisi vitae velit volutpat
-								venenatis.</p>
-							<p>Sed a dignissim lacus. Quisque fermentum est non orci
-								commodo, a luctus urna mattis. Ut placerat, diam a tempus
-								vehicula.</p>
+							<p>Your Health Center serves as a comprehensive hub where
+								patients can easily find and book appointments with registered
+								doctors. Whether you're seeking a specialist or a general
+								practitioner, our platform offers a diverse range of medical
+								professionals to cater to your needs.</p>
+							<p>Gone are the days of long waiting times and endless phone
+								calls to schedule appointments. With Your Health Center,
+								patients can book appointments with their preferred doctors at
+								their convenience. Our user-friendly interface ensures a
+								hassle-free booking process, allowing you to focus on what truly
+								matters - your health.</p>
 						</div>
 						<figure class="profile wow fadeInUp" data-wow-delay="1s">
 							<img src="assests/client/images/author-image.jpg"
 								class="img-responsive" alt="">
 							<figcaption>
-								<h3>Dr. Neil Jackson</h3>
-								<p>General Principal</p>
+								<h3>
+									<i class="fa fa-h-square"></i>ealth Center
+								</h3>
+								<p>Well Educated and Experienced Doctors</p>
 							</figcaption>
 						</figure>
 					</div>
@@ -100,7 +106,7 @@
 				for (doctor dr : doctors) {
 				%>
 
-		<div class="col-md-4 col-sm-6">
+				<div class="col-md-4 col-sm-6">
 					<div class="team-thumb wow fadeInUp" data-wow-delay="0.6s">
 						<img src="assests/img/doctor.avif" class="img-responsive" alt="">
 
@@ -124,8 +130,8 @@
 							</div>
 							<div class="team-contact-info"
 								style="padding-bottom: 20px; display: flex; justify-content: space-between;">
-								
-<%
+
+								<%
 								if (isLoggedIn && userid == 3) {
 								%>
 								<a
@@ -135,8 +141,7 @@
 								<%
 								} else {
 								%>
-								<a
-									href="login.jsp">
+								<a href="login.jsp">
 									<button class="btn btn-outline-primary">Give Feedback</button>
 								</a>
 								<%
@@ -155,8 +160,7 @@
 								<%
 								} else {
 								%>
-								<a
-									href="login.jsp">
+								<a href="login.jsp">
 									<button class="btn btn-primary">Make appointment</button>
 								</a>
 								<%
