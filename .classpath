@@ -19,5 +19,8 @@
 	<classpathentry kind="lib" path="E:/Drive D/sofware/java dev/java jstl in jsp/jstl.jar"/>
 	<classpathentry kind="lib" path="E:/Drive D/sofware/java dev/java jstl in jsp/jstl-impl-1.2.jar"/>
 	<classpathentry kind="lib" path="E:/Drive D/sofware/java dev/java jstl in jsp/jstl-standard.jar"/>
+	<classpathentry kind="lib" path="E:/Drive D/sofware/java dev/Java Mail and Activation/mailactivation/activation.jar"/>
+	<classpathentry kind="lib" path="E:/Drive D/sofware/java dev/Java Mail and Activation/mailactivation/mail.jar"/>
+	<classpathentry kind="lib" path="E:/Drive D/sofware/java dev/Java Mail and Activation/mailactivation/techsoftemail.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
