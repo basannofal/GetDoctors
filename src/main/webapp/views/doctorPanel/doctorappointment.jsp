@@ -58,7 +58,12 @@
 				<div class="content-data">
 					<div class="head">
 						<h3>All Appointments</h3>
-
+						<div class="menu">
+							<i class='bx bx-dots-horizontal-rounded icon'></i>
+							<ul class="menu-link">
+								<li><a href="/GetDoctors/pdfgenerator">Generate PDF</a></li>
+							</ul>
+						</div>
 					</div>
 					<div>
 
